@@ -69,13 +69,14 @@
     )
     (asserts! (is-eq sender (var-get executive)) ERR_UNAUTHORIZED)
     (var-set executive (as-contract tx-sender))
+    (as-contract (execute proposal sender))
     ;; Challenge 1
     ;; (contract-call? .core set-extensions
     ;;        (list
     ;;         {extension: .membership-token, enabled: true}
     ;;         {extension: .proposal-voting, enabled: true}
     ;;         {extension: .proposal-submission, enabled: true}))
-    (as-contract (execute proposal sender))
+    
     ;; Distribute initial token allocation to addresses responsible for voting on grants.
     ;; (as-contract (contract-call? .membership-token mint-many 
     ;;         (list
