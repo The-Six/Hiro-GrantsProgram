@@ -31,6 +31,21 @@
 )
 ;;Token Minting and Burning End.
 
+;; Challenge 1
+;; This can handle minting with a list of recipients and amounts
+
+(define-private (mint-many-iter (item {amount: uint, recipient: principal}))
+	(ft-mint? sGrant (get amount item) (get recipient item))
+)
+
+(define-public (mint-many (recipients (list 200 {amount: uint, recipient: principal})))
+	(begin
+		(try! (is-dao-or-extension))
+		(ok (map mint-many-iter recipients))
+	)
+)
+;; Challenge 1 End
+
 ;;Token Information
 (define-read-only (get-name)
   (ok (var-get tokenName))

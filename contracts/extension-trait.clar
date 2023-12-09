@@ -4,6 +4,7 @@
     (callback (principal (buff 34)) (response bool uint))
   )
 )
+
 ;; title: extension-trait
 ;; version:
 ;; summary:

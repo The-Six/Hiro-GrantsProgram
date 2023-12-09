@@ -33,6 +33,20 @@
     (ok (map-set extensions extension enabled))
   )
 )
+
+(define-private (set-extensions-iter (item {extension: principal, enabled: bool}))
+	(begin
+		(print {event: "extension", extension: (get extension item), enabled: (get enabled item)})
+		(map-set extensions (get extension item) (get enabled item))
+	)
+)
+
+(define-public (set-extensions (extension-list (list 200 {extension: principal, enabled: bool})))
+	(begin
+		(try! (is-self-or-extension))
+		(ok (map set-extensions-iter extension-list))
+	)
+)
 ;;Extension Management End.
 
 ;;Proposal Execution
@@ -51,21 +65,24 @@
   (let
     (
       (sender tx-sender)
+
     )
     (asserts! (is-eq sender (var-get executive)) ERR_UNAUTHORIZED)
     (var-set executive (as-contract tx-sender))
-    ;; (as-contract (contract-call? .core set-extension
+    ;; Challenge 1
+    ;; (contract-call? .core set-extensions
     ;;        (list
     ;;         {extension: .membership-token, enabled: true}
     ;;         {extension: .proposal-voting, enabled: true}
-    ;;         {extension: .proposal-submission, enabled: true})))
+    ;;         {extension: .proposal-submission, enabled: true}))
     (as-contract (execute proposal sender))
     ;; Distribute initial token allocation to addresses responsible for voting on grants.
-    ;; (as-contract (contract-call? .membership-token mint
-
-    ;;         {amount: u1000, recipient: 'ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5}
-	;; 		))
-    
+    ;; (as-contract (contract-call? .membership-token mint-many 
+    ;;         (list
+    ;;         {amount: u1000, recipient: ''}
+    ;;         {amount: u1000, recipient: ''}
+    ;;         {amount: u1000, recipient: ''})))
+    ;; Challenge 1 End
   )
 )
 ;;Bootstrap End.
