@@ -1,4 +1,10 @@
-;; title: hello-world
+;; extension-trait.clar
+(define-trait extension-trait
+  (
+    (callback (principal (buff 34)) (response bool uint))
+  )
+)
+;; title: extension-trait
 ;; version:
 ;; summary:
 ;; description:
@@ -7,7 +13,7 @@
 ;;
 
 ;; token definitions
-;; 
+;;
 
 ;; constants
 ;;

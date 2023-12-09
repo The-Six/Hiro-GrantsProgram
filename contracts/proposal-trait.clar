@@ -1,4 +1,10 @@
-;; title: hello-world
+;; proposal-trait.clar
+(define-trait proposal-trait
+  (
+    (execute (principal) (response bool uint))
+  )
+)
+;; title: proposal-trait
 ;; version:
 ;; summary:
 ;; description:
@@ -7,7 +13,7 @@
 ;;
 
 ;; token definitions
-;; 
+;;
 
 ;; constants
 ;;
