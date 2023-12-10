@@ -4,7 +4,8 @@ import {
   callReadOnlyFunction,
   getAddressFromPublicKey,
   uintCV,
-  cvToValue
+  cvToValue,
+  standardPrincipalCV
 } from '@stacks/transactions';
 import {
   AppConfig,
@@ -111,6 +112,111 @@ function App(): ReactElement {
     }
   };
 
+  const runBootstrap = async () => {
+    const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractName = 'core';
+    const functionName = 'construct';
+    const bootstrap =
+      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.edp000-bootstrap';
+
+    const functionArgs = [standardPrincipalCV(bootstrap)];
+    // const functionArgs = [uintCV(10)];
+
+    try {
+      const result = await callReadOnlyFunction({
+        network,
+        contractAddress,
+        contractName,
+        functionName,
+        functionArgs,
+        senderAddress
+      });
+      setHasFetchedReadOnly(true);
+      console.log('Bootstrap Button clicked');
+      console.log(cvToValue(result));
+      // console.log(result);
+    } catch (error) {
+      console.error('Error fetching read-only function:', error);
+    }
+  };
+
+  const proposeContract = async () => {
+    const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractName = 'proposal-submission';
+    const functionName = 'propose';
+    const bootstrap =
+      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.edp001-dev-fund';
+
+    // const functionArgs = [
+    //   standardPrincipalCV(bootstrap),
+    //   'ProjectTitle',
+    //   'ProjectDescription'
+    // ];
+    const functionArgs = [uintCV(10)];
+
+    try {
+      const result = await callReadOnlyFunction({
+        network,
+        contractAddress,
+        contractName,
+        functionName,
+        functionArgs,
+        senderAddress
+      });
+      setHasFetchedReadOnly(true);
+      console.log('Bootstrap Button clicked');
+      console.log(cvToValue(result));
+      // console.log(result);
+    } catch (error) {
+      console.error('Error fetching read-only function:', error);
+    }
+  };
+
+  const testIsExtension = async () => {
+    // Define your contract details here
+    // const senderAddress = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM";
+
+    // const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    // const contractName = 'keys';
+    // const functionName = 'is-keyholder';
+
+    // const functionArgs = [standardPrincipalCV(senderAddress)];
+
+    // const contractAddress = 'SP000000000000000000002Q6VF78';
+    // const contractName = 'pox-3';
+    // const functionName = 'is-pox-active';
+    // const functionArgs = [uintCV(10)];
+
+    const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+    const contractName = 'core';
+    const functionName = 'is-extension';
+    const extensionAddress =
+      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.membership-token';
+
+    // const functionArgs = [standardPrincipalCV(extensionAddress)];
+    const functionArgs = [uintCV(10)];
+
+    try {
+      const result = await callReadOnlyFunction({
+        network,
+        contractAddress,
+        contractName,
+        functionName,
+        functionArgs,
+        senderAddress
+      });
+      setHasFetchedReadOnly(true);
+      console.log('Button clicked');
+      console.log(cvToValue(result));
+      // console.log(result);
+    } catch (error) {
+      console.error('Error fetching read-only function:', error);
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="mx-auto max-w-2xl px-4">
@@ -190,6 +296,30 @@ function App(): ReactElement {
             )}
           </div>
         </div>
+        {userSession.isUserSignedIn() ? (
+          <div>
+            <button
+              className="mt-4 px-2 border hover:bg-violet-600 hover:text-white"
+              onClick={() => runBootstrap()}
+            >
+              Run Bootstrap
+            </button>
+            <br />
+            <button
+              className="mt-4 px-2 border hover:bg-violet-600 hover:text-white"
+              onClick={() => proposeContract()}
+            >
+              Propose Contract
+            </button>
+            <br />
+            <button
+              className="mt-4 px-2 border hover:bg-violet-600 hover:text-white"
+              onClick={() => testIsExtension()}
+            >
+              testIsExtension
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
