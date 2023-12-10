@@ -1,4 +1,4 @@
-;; Challenge 2 : Create Grant Proposals
+;; Challenge 3 : Implement Milestone-Based funding
 (impl-trait .extension-trait.extension-trait)
 
 (define-constant one-month-time u4380) ;; 43,800 minutes / 10 minute average block time.
@@ -73,4 +73,4 @@
 (define-public (callback (sender principal) (memo (buff 34)))
 	(ok true)
 )
-;; Challenge 2 : Create Grant Proposals End
+;; Challenge 3 : Implement Milestone-Based funding End
