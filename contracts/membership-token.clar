@@ -15,6 +15,18 @@
 )
 ;;Authorization Check End.
 
+;; ;; Challenge 4
+
+;; (define-public (edg-unlock (amount uint) (owner principal))
+;; 	(begin
+;; 		(try! (is-dao-or-extension))
+;; 		(try! (ft-burn? edg-token-locked amount owner))
+;; 		(ft-mint? sGrant amount owner)
+;; 	)
+;; )
+
+;; ;; Challenge 4 End
+
 ;;Token Minting and Burning
 (define-public (mint (amount uint) (recipient principal))
   (begin

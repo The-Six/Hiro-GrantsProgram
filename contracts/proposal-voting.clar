@@ -72,6 +72,14 @@
   )
 )
 
+;; Challenge 4 start
+
+(define-read-only (get-proposal-data (proposal principal))
+	(map-get? proposals proposal)
+)
+
+;; Challenge 4 end
+
 (define-read-only (get-current-total-votes (proposal principal) (voter principal))
   (default-to u0 (map-get? member-total-votes {proposal: proposal, voter: voter}))
 )
@@ -94,6 +102,30 @@
   )
 )
 ;;Conclusion End.
+
+;; ;; Challenge 4 start
+
+;; (define-public (reclaim-votes (proposal <proposal-trait>))
+;; 	(let
+;; 		(
+;; 			(proposal-principal (contract-of proposal))
+;; 			(proposal-data (unwrap! (map-get? proposals proposal-principal) err-unknown-proposal))
+;; 			(votes (unwrap! (map-get? member-total-votes {proposal: proposal-principal, voter: tx-sender}) err-no-votes-to-return))
+;; 		)
+;; 		(asserts! (get concluded proposal-data) err-proposal-not-concluded)
+;; 		(map-delete member-total-votes {proposal: proposal-principal, voter: tx-sender})
+;; 		(contract-call? .membership-token edg-unlock votes tx-sender)
+;; 	)
+;; )
+
+;; (define-public (reclaim-and-vote (amount uint) (for bool) (proposal principal) (reclaim-from <proposal-trait>))
+;; 	(begin
+;; 		(try! (reclaim-votes reclaim-from))
+;; 		(vote amount for proposal)
+;; 	)
+;; )
+
+;; ;; Challenge 4 end
 
 ;;Extension Callback
 (define-public (callback (sender principal) (memo (buff 34)))
