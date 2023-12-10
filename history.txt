@@ -19,3 +19,8 @@
 (contract-call? .proposal-submission propose .edp001-dev-fund "Hello-title" "hello" )
 (contract-call? .proposal-submission propose .edp001-dev-fund "hellotitle" "hello" )
 (contract-call? .proposal-submission propose .edp001-dev-fund "hellotitle" "12345678" )
+(contract-call? .core construct .edp000-bootstrap)
+(contract-call? .proposal-submission propose .edp001-dev-fund "Ironman" "Batman" )
+(contract-call? .proposal-submission propose .edp001-dev-fund "Red-Funding" " Red-Funding-Description" )
+(contract-call? .core construct .edp000-bootstrap)
+(contract-call? .proposal-submission propose .edp001-dev-fund "Ironman" "Batman" )

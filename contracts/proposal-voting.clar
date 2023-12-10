@@ -27,7 +27,7 @@
     passed: bool,
     proposer: principal,
     title: (string-ascii 50),
-    description: (string-utf8 500)
+    description: (string-ascii 500)
   }
 )
 
@@ -41,7 +41,7 @@
 ;;Authorization Check End.
 
 ;;Proposals
-(define-public (add-proposal (proposal <proposal-trait>) (data {start-block-height: uint, end-block-height: uint, proposer: principal, title: (string-ascii 50), description: (string-utf8 500)}))
+(define-public (add-proposal (proposal <proposal-trait>) (data {start-block-height: uint, end-block-height: uint, proposer: principal, title: (string-ascii 50), description: (string-ascii 500)}))
   (begin
     (try! (is-dao-or-extension))
     ;; change .executor-dao to .core

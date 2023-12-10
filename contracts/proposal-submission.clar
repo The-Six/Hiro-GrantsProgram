@@ -25,7 +25,7 @@
 ;;Parameters End.
 
 ;;Proposals
-(define-public (propose (proposal <proposal-trait>) (title (string-ascii 50)) (description (string-utf8 500)))
+(define-public (propose (proposal <proposal-trait>) (title (string-ascii 50)) (description (string-ascii 500)))
   (begin
     (contract-call? .proposal-voting add-proposal
       proposal
