@@ -10,8 +10,18 @@ path = 'contracts/core.clar'
 clarity_version = 2
 epoch = 2.4
 
+[contracts.ede005-dev-fund]
+path = 'contracts/ede005-dev-fund.clar'
+clarity_version = 2
+epoch = 2.4
+
 [contracts.edp000-bootstrap]
 path = 'contracts/edp000-bootstrap.clar'
+clarity_version = 2
+epoch = 2.4
+
+[contracts.edp001-dev-fund]
+path = 'contracts/edp001-dev-fund.clar'
 clarity_version = 2
 epoch = 2.4
 
