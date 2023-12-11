@@ -6,27 +6,11 @@
 		;; Enable genesis extensions.
 		(try! (contract-call? .core set-extensions
 			(list
-				;; {extension: .ede000-governance-token, enabled: true}
-				;; {extension: .ede001-proposal-voting, enabled: true}
-				;; {extension: .ede002-proposal-submission, enabled: true}
-				;; {extension: .ede003-emergency-proposals, enabled: true}
-				;; {extension: .ede004-emergency-execute, enabled: true}
                 {extension: .membership-token, enabled: true}
                  {extension: .proposal-voting, enabled: true}
                  {extension: .proposal-submission, enabled: true}
 			)
 		))
-
-		;; ;; Set emergency team members.
-		;; (try! (contract-call? .ede003-emergency-proposals set-emergency-team-member 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM true))
-		;; (try! (contract-call? .ede003-emergency-proposals set-emergency-team-member 'ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5 true))
-
-		;; ;; Set executive team members.
-		;; (try! (contract-call? .ede004-emergency-execute set-executive-team-member 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM true))
-		;; (try! (contract-call? .ede004-emergency-execute set-executive-team-member 'ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5 true))
-		;; (try! (contract-call? .ede004-emergency-execute set-executive-team-member 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG true))
-		;; (try! (contract-call? .ede004-emergency-execute set-executive-team-member 'ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC true))
-		;; (try! (contract-call? .ede004-emergency-execute set-signals-required u3)) ;; signal from 3 out of 4 team members requied.
 
 		;; Mint initial token supply.
 		(try! (contract-call? .membership-token mint-many 

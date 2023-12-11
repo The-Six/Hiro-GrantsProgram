@@ -112,15 +112,16 @@ function App(): ReactElement {
     }
   };
 
-  const runBootstrap = async () => {
+  const executeBootstrap = async () => {
     const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
     const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
     const contractName = 'core';
     const functionName = 'construct';
     const bootstrap =
       'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.edp000-bootstrap';
+    const bootstrap2 = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
 
-    const functionArgs = [standardPrincipalCV(bootstrap)];
+    const functionArgs = [standardPrincipalCV(bootstrap2)];
     // const functionArgs = [uintCV(10)];
 
     try {
@@ -141,86 +142,94 @@ function App(): ReactElement {
     }
   };
 
-  const proposeContract = async () => {
-    const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-    const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-    const contractName = 'proposal-submission';
-    const functionName = 'propose';
-    const bootstrap =
-      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.edp001-dev-fund';
+  // const proposeContract = async () => {
+  //   const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+  //   const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+  //   const contractName = 'proposal-submission';
+  //   const functionName = 'propose';
+  //   const bootstrap =
+  //     'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.edp001-dev-fund';
 
-    // const functionArgs = [
-    //   standardPrincipalCV(bootstrap),
-    //   'ProjectTitle',
-    //   'ProjectDescription'
-    // ];
-    const functionArgs = [uintCV(10)];
+  //   // const functionArgs = [
+  //   //   standardPrincipalCV(bootstrap),
+  //   //   'ProjectTitle',
+  //   //   'ProjectDescription'
+  //   // ];
+  //   const functionArgs = [uintCV(10)];
 
-    try {
-      const result = await callReadOnlyFunction({
-        network,
-        contractAddress,
-        contractName,
-        functionName,
-        functionArgs,
-        senderAddress
-      });
-      setHasFetchedReadOnly(true);
-      console.log('Bootstrap Button clicked');
-      console.log(cvToValue(result));
-      // console.log(result);
-    } catch (error) {
-      console.error('Error fetching read-only function:', error);
-    }
-  };
+  //   try {
+  //     const result = await callReadOnlyFunction({
+  //       network,
+  //       contractAddress,
+  //       contractName,
+  //       functionName,
+  //       functionArgs,
+  //       senderAddress
+  //     });
+  //     setHasFetchedReadOnly(true);
+  //     console.log('Bootstrap Button clicked');
+  //     console.log(cvToValue(result));
+  //     // console.log(result);
+  //   } catch (error) {
+  //     console.error('Error fetching read-only function:', error);
+  //   }
+  // };
 
-  const testIsExtension = async () => {
-    // Define your contract details here
-    // const senderAddress = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM";
+  // const testIsExtension = async () => {
+  //   // Define your contract details here
+  //   // const senderAddress = "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM";
 
-    // const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-    // const contractName = 'keys';
-    // const functionName = 'is-keyholder';
+  //   // const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+  //   // const contractName = 'keys';
+  //   // const functionName = 'is-keyholder';
 
-    // const functionArgs = [standardPrincipalCV(senderAddress)];
+  //   // const functionArgs = [standardPrincipalCV(senderAddress)];
 
-    // const contractAddress = 'SP000000000000000000002Q6VF78';
-    // const contractName = 'pox-3';
-    // const functionName = 'is-pox-active';
-    // const functionArgs = [uintCV(10)];
+  //   // const contractAddress = 'SP000000000000000000002Q6VF78';
+  //   // const contractName = 'pox-3';
+  //   // const functionName = 'is-pox-active';
+  //   // const functionArgs = [uintCV(10)];
 
-    const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-    const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
-    const contractName = 'core';
-    const functionName = 'is-extension';
-    const extensionAddress =
-      'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.membership-token';
+  //   const senderAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+  //   const contractAddress = 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM';
+  //   const contractName = 'core';
+  //   const functionName = 'is-extension';
+  //   const extensionAddress =
+  //     'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.membership-token';
 
-    // const functionArgs = [standardPrincipalCV(extensionAddress)];
-    const functionArgs = [uintCV(10)];
+  //   // const functionArgs = [standardPrincipalCV(extensionAddress)];
+  //   const functionArgs = [uintCV(10)];
 
-    try {
-      const result = await callReadOnlyFunction({
-        network,
-        contractAddress,
-        contractName,
-        functionName,
-        functionArgs,
-        senderAddress
-      });
-      setHasFetchedReadOnly(true);
-      console.log('Button clicked');
-      console.log(cvToValue(result));
-      // console.log(result);
-    } catch (error) {
-      console.error('Error fetching read-only function:', error);
-    }
-  };
+  //   try {
+  //     const result = await callReadOnlyFunction({
+  //       network,
+  //       contractAddress,
+  //       contractName,
+  //       functionName,
+  //       functionArgs,
+  //       senderAddress
+  //     });
+  //     setHasFetchedReadOnly(true);
+  //     console.log('Button clicked');
+  //     console.log(cvToValue(result));
+  //     // console.log(result);
+  //   } catch (error) {
+  //     console.error('Error fetching read-only function:', error);
+  //   }
+  // };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="mx-auto max-w-2xl px-4">
-        <div className="rounded-lg border bg-background p-8">
+        <div className="flex items-center justify-center">
+          <img
+            className="mb-4 mt-4 rounded-lg"
+            src="../assets/marcoijazcodetech-coloured.png"
+            alt="logo"
+            width="150px"
+          />
+        </div>
+        <div className="rounded-lg border bg-amber-400 p-8">
           <h1 className="mb-2 text-lg font-semibold">Welcome to Hiro Hacks!</h1>
           <p className="leading-normal text-muted-foreground">
             This is an open source starter template built with{' '}
@@ -297,14 +306,68 @@ function App(): ReactElement {
           </div>
         </div>
         {userSession.isUserSignedIn() ? (
-          <div>
+          <div className="mt-4 rounded-lg border bg-amber-400 p-8">
+            <h1 className="text-xl underline text-center">Grants Program</h1>
+            <h3 className="mt-4 text-lg">Instructions to run the program: </h3>
+            <p className="mt-2">
+              1. Go to terminal and open the clarinet console
+            </p>
+            <p className="text-white bg-black py-2 pl-4">clarinet console</p>
+            <p className="mt-2">
+              2. Execute the bootstrap proposal by inputting
+            </p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .core construct .edp000-bootstrap)
+            </p>
+            <p className="mt-2">3. Submit the edp001-dev-fund proposal</p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .proposal-submission propose .edp001-dev-fund
+              "Proposal-title" "Proposal-description")
+            </p>
+            <p className="mt-2">4. Advance the chain 144 blocks</p>
+            <p className="text-white bg-black py-2 pl-4">
+              ::advance_chain_tip 144
+            </p>
+            <p className="mt-2">
+              5. Check the current proposal data before voting
+            </p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .proposal-voting get-proposal-data
+              .edp001-dev-fund)
+            </p>
+            <p className="mt-2">6. Vote Yes with 100 tokens</p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .proposal-voting vote u100 true .edp001-dev-fund)
+            </p>
+            <p className="mt-2">7. Check the updated proposal data</p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .proposal-voting get-proposal-data
+              .edp001-dev-fund)
+            </p>
+            <p className="mt-2">8. Advance the chain tip</p>
+            <p className="text-white bg-black py-2 pl-4">
+              ::advance_chain_tip 1440
+            </p>
+            <p className="mt-2">9. Conclude the proposal vote</p>
+            <p className="text-white bg-black py-2 pl-4">
+              (contract-call? .proposal-voting conclude .edp001-dev-fund)
+            </p>
+            <p className="mt-2">10. Check the ede005-dev-fund contract now</p>
+            <p className="text-white bg-black py-2 pl-4">::get_assets_maps</p>
+            <p className="mt-4">
+              Notes: Our contracts are not deployed on the blockchain and this
+              is why we can only test the functionality locally through the
+              clarinet console and not through a dynamic frontend. A button is
+              created to validate this. Please open the Chrome Console to view
+              the error message.
+            </p>
             <button
-              className="mt-4 px-2 border hover:bg-violet-600 hover:text-white"
-              onClick={() => runBootstrap()}
+              className="mt-4 px-2 border bg-yellow-200 hover:bg-violet-600 hover:text-white"
+              onClick={() => executeBootstrap()}
             >
-              Run Bootstrap
+              Execute Bootstrap
             </button>
-            <br />
+            {/* <br />
             <button
               className="mt-4 px-2 border hover:bg-violet-600 hover:text-white"
               onClick={() => proposeContract()}
@@ -317,43 +380,12 @@ function App(): ReactElement {
               onClick={() => testIsExtension()}
             >
               testIsExtension
-            </button>
+            </button> */}
           </div>
         ) : null}
       </div>
     </div>
   );
-
-  // return (
-  //   <div className="text-center">
-  //     <h1 className="text-xl">Friend.tech</h1>
-  //     <div>
-  //       <button onClick={disconnectWallet}>Disconnect Wallet</button>
-  //     </div>
-  //     <div>
-  //       <p>
-  //         {address} is {isKeyHolder ? '' : 'not'} a key holder
-  //       </p>
-  //       <div>
-  //         <input
-  //           type="text"
-  //           id="address"
-  //           name="address"
-  //           placeholder="Enter address"
-  //         />
-  //         <button onClick={() => checkIsKeyHolder(address)}>
-  //           Check Key Holder
-  //         </button>
-  //         <div>
-  //           <p>Key Holder Check Result: {isKeyHolder ? 'Yes' : 'No'}</p>
-  //         </div>
-  //       </div>
-  //     </div>
-  //     <div>
-  //       Sign this message: <button onClick={signMessage}>Sign</button>
-  //     </div>
-  //   </div>
-  // );
 }
 
 export default App;

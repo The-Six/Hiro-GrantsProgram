@@ -94,33 +94,3 @@
   (ok (var-get tokenUri))
 )
 ;;Token Information End.
-
-;; title: membership-token
-;; version:
-;; summary:
-;; description:
-
-;; traits
-;;
-
-;; token definitions
-;;
-
-;; constants
-;;
-
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
-
